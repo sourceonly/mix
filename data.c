@@ -23,7 +23,26 @@ void init_mem (MIX_MEM * mem) {
     }
   }
 }
+void init_reg (MIX_REG* reg) {
+  int i;
+  for (i=0;i<MIX_REG_COUNT;i++) {
+    reg->REG[i]=malloc(sizeof(MIX_WORD));
+    init_word(reg->REG[i]);
+  }
+}
 
+void init_dev (MIX_DEV* dev) {
+}
+void init_sim (MIX_SIM* sim) {
+  sim->dev=malloc(sizeof(MIX_DEV));
+  init_dev(sim->dev);
+  sim->reg=malloc(sizeof(MIX_REG));
+  init_reg(sim->reg);
+  sim->mem=malloc(sizeof(MIX_MEM));
+  init_mem(sim->mem);
+  sim->overflow=0;
+  sim->compare_indicator=0;
+}
 
 
 
@@ -134,7 +153,10 @@ int main () {
   MIX_WORD* ptr1418=list_entry((&((&mem)->word[1420]->list_head))->prev->prev,MIX_WORD,list_head);
   ptr1418->cell[4]->value=1000;
   
-  print_mem(&mem,3999);
+  /*print_mem(&mem,3999);*/
+  MIX_SIM* sim;
+  init_sim(sim);
+  
   
   exit(0);
 }
