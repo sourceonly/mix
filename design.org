@@ -1,0 +1,23 @@
+
+* TODO MIX SIMULATE [0%]
+  - [-] mix data struct 
+    defined in data.h/data.c 
+    - [-] base_element 
+      - [X] mix word 
+      - [X] mix cell 
+      - [ ] tools 
+	- [ ] overflow toggle 
+	- [ ] comparison indicator
+	- [ ] input/output dev 
+      - [X] mix mem 
+	MIX_MEM struct  4000 words of total, double linked list of mix word, which designed to be direct accessed through index 
+	  MIX_MEM * ptr ; ptr->word[1024] to get to 1025 word
+    - [ ] registers  
+      - [ ] rA 
+      - [ ] rX 
+      - [ ] rI1-6
+      - [ ] rJ 
+      
+  - [ ] mix op ( big story !!) 
+  - [ ] line parse  ( big story !! ) 
+  
