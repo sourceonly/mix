@@ -1,4 +1,4 @@
-#include <data.h>
+#include <mix_data.h>
 #include <malloc.h>
 
 void init_word (MIX_WORD* word) {
@@ -26,8 +26,8 @@ void init_mem (MIX_MEM * mem) {
 void init_reg (MIX_REG* reg) {
   int i;
   for (i=0;i<MIX_REG_COUNT;i++) {
-    reg->REG[i]=malloc(sizeof(MIX_WORD));
-    init_word(reg->REG[i]);
+    reg->reg[i]=malloc(sizeof(MIX_REG));
+    init_word(reg->reg[i]);
   }
 }
 
@@ -78,9 +78,25 @@ void print_mem(MIX_MEM* mem, int field) {
   int i ;
   for (i=L;i<=R;i++) {
     printf("ADDR %4d:\t",i);
-    print_word(mem->word[i],21);
+    print_word(mem->word[i],5);
   }
   printf("\n");
+}
+void print_reg(MIX_REG* reg, int field) {
+  const char* name[]={"rA",
+		"rX",
+		"rI1",
+		"rI2",
+		"rI3",
+		"rI4",
+		"rI5",
+		"rI6",
+		"rJ"};
+  int i;
+  for(i=0;i<MIX_REG_COUNT;i++) {
+    printf("%-4s:\t",name[i]);
+    print_word(reg->reg[i],field);
+  }
 }
 
 
@@ -88,7 +104,8 @@ void print_mem(MIX_MEM* mem, int field) {
 
 
 
-#ifdef DEBUG
+
+#ifdef DATA_DEBUG
 void hline(const char* string) {
   printf("\n========%s==========\n",string);
 }
@@ -153,11 +170,11 @@ int main () {
   MIX_WORD* ptr1418=list_entry((&((&mem)->word[1420]->list_head))->prev->prev,MIX_WORD,list_head);
   ptr1418->cell[4]->value=1000;
   
-  /*print_mem(&mem,3999);*/
-  MIX_SIM* sim;
-  init_sim(sim);
+  print_mem(&mem,3999*8000+3999);
+  MIX_SIM sim;
+  init_sim(&sim);
   
-  
+  print_reg((&sim)->reg, 5);
   exit(0);
 }
 #endif

@@ -1,5 +1,5 @@
-#ifndef __DATA_H
-#define __DATA_H
+#ifndef __MIX_DATA_H
+#define __MIX_DATA_H
 
 #define MIX_WORD_BITS 6
 #define MIX_MEM_COUNT 4000
@@ -17,7 +17,6 @@
 #define MIX_REG_rJ  8
 /* define magic number for DEV */
 #define MIX_DEV_COUNT 10
-
 
 
 struct list_header {
@@ -54,11 +53,11 @@ static void init_cell (MIX_CELL* cell) {
 
 
 typedef struct mix_reg {
-  MIX_WORD* REG[MIX_REG_COUNT];
+  MIX_WORD* reg[MIX_REG_COUNT];
 } MIX_REG;
 
 typedef struct mix_dev {
-  MIX_WORD* REG[MIX_DEV_COUNT];
+  MIX_WORD* reg[MIX_DEV_COUNT];
 } MIX_DEV;
 
 
@@ -81,13 +80,7 @@ void init_sim (MIX_SIM*);
 void print_cell(MIX_CELL*,int);
 void print_word(MIX_WORD*,int);
 void print_mem(MIX_MEM*, int);
-
-
-
-
-
-
-
+void print_reg(MIX_REG*, int); 
 
 
 
@@ -99,24 +92,8 @@ static void list_add ( struct list_header * new, struct list_header * head) {
 }
 
 
-
 #define list_entry(ptr, typeof, member ) \
   ((typeof *) ((char *)( ptr ) - (char *) (&( ( (typeof *) 0 )->member))))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
