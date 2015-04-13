@@ -100,15 +100,11 @@ void print_reg(MIX_REG* reg, int field) {
 }
 
 
-
-
-
-
 void hline(const char* string) {
   printf("\n========%s==========\n",string);
 }
 
-#ifdef DATA_DEBUG
+#ifdef MIX_DATA_DEBUG
 void dump_cell(MIX_CELL* cell) {
   printf("\t==========cell info========\n");
   printf("\t ADDR: %d \n ", cell);

@@ -3,15 +3,16 @@ CFLAG='-g'
 DEBUG=' '
 INCLUDE='.'
 
+
+
 all: a.out .c.o
 a.out:
 	${CC} -DDATA_DEBUG -o a.out *.o
 
 test_data:
-	${CC} -D
+	${CC} -DMIX_DATA_DEBUG -o a.out -I. ${CFLAG} mix_op.c mix_data.c
 test_op:
-	${CC} -DMIX_OP_DEBUG -o a.out -I. mix_op.c mix_data.c
-
+	${CC} -DMIX_OP_DEBUG -o a.out -I. ${CFLAG} mix_op.c mix_data.c
 
 .o.c:
 	${CC} ${CLAG} -I${INCLUDE} -o $@ $<
