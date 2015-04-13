@@ -5,7 +5,12 @@ INCLUDE='.'
 
 all: a.out .c.o
 a.out:
-	gcc -DDATA_DEBUG -o a.out *.o
+	${CC} -DDATA_DEBUG -o a.out *.o
+
+test_data:
+	${CC} -D
+test_op:
+	${CC} -DMIX_OP_DEBUG -o a.out -I. mix_op.c mix_data.c
 
 
 .o.c:
@@ -17,4 +22,4 @@ a.out:
 
 .PYTHONY: 
 clean:
-	-rm -f *~ a.out *.o
+	-rm -f *~ a.out *.o \#*\#

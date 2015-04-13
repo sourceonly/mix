@@ -26,7 +26,7 @@ struct list_header {
 
 typedef struct mix_cell {
   struct list_header list_head;
-  short value; 
+  unsigned short value; 
 } MIX_CELL;
 
 typedef struct mix_word {
@@ -49,7 +49,6 @@ static void init_cell (MIX_CELL* cell) {
   cell->value=0;
   init_list_head(&(cell->list_head));
 }
-
 
 
 typedef struct mix_reg {

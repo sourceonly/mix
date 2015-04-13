@@ -52,7 +52,7 @@ void print_cell(MIX_CELL* cell,int sign) {
   if (sign > 0) {
     printf(" %4d ", cell->value);
   } else {
-    if (cell->value >= 0) {
+    if (cell->value >= 32) {
       printf(" %4s ", "+");
     } else {
       printf (" %4s ", "-");
@@ -104,11 +104,11 @@ void print_reg(MIX_REG* reg, int field) {
 
 
 
-
-#ifdef DATA_DEBUG
 void hline(const char* string) {
   printf("\n========%s==========\n",string);
 }
+
+#ifdef DATA_DEBUG
 void dump_cell(MIX_CELL* cell) {
   printf("\t==========cell info========\n");
   printf("\t ADDR: %d \n ", cell);
